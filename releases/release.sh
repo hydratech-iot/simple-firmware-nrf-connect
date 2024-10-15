@@ -1,4 +1,4 @@
-FIRMWARE_VERSION=v1.0.0
+FIRMWARE_VERSION=v1.0.1
 
 BUILD_PATH=../build/customer/zephyr/
 BUILD_FIMRWARE_PATH=$BUILD_PATH/nrf_sample.hex
