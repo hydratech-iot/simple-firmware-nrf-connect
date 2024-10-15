@@ -1,14 +1,10 @@
 /*
  * File Name: bsp_timer.c
  *
- * Author: Thuan Le (thuanle@hydratech-iot.com)
+ * Author: Thuan Le
  *
  * Description: System Manager
  *
- * Copyright 2024, HydraTech. All rights reserved.
- * You may use this file only in accordance with the license, terms, conditions,
- * disclaimers, and limitations in the end user license agreement accompanying
- * the software package with which this file was provided.
  */
 
 /* Includes ----------------------------------------------------------------- */

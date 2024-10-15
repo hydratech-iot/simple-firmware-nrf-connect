@@ -1,14 +1,10 @@
 /*
  * File Name: ble_peripheral.c
  *
- * Author: Thuan Le (thuanle@hydratech-iot.com)
+ * Author: Thuan Le
  *
  * Description:
  *
- * Copyright 2024, HydraTech. All rights reserved.
- * You may use this file only in accordance with the license, terms, conditions,
- * disclaimers, and limitations in the end user license agreement accompanying
- * the software package with which this file was provided.
  */
 
 /* Includes ----------------------------------------------------------- */
@@ -180,6 +176,11 @@ void ble_peripheral_init(ble_receive_cb_t receive_cb, ble_connection_status_cb_t
         LOG_ERR("Advertising failed to start (err %d)", err);
         return;
     }
+}
+
+void ble_peripheral_deinit(void)
+{
+    bt_disable();
 }
 
 void ble_peripheral_send_data(const uint8_t *data, uint16_t len)

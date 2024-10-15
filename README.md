@@ -1,1 +1,0 @@
-# prj-053-horse-health-tracker-nrf-connect-fw

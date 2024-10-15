@@ -1,14 +1,10 @@
 /*
  * File Name: ble_peripheral.h
  *
- * Author: Thuan Le (thuanle@hydratech-iot.com)
+ * Author: Thuan Le
  *
  * Description:
  *
- * Copyright 2024, HydraTech. All rights reserved.
- * You may use this file only in accordance with the license, terms, conditions,
- * disclaimers, and limitations in the end user license agreement accompanying
- * the software package with which this file was provided.
  */
 
 /* Define to prevent recursive inclusion ------------------------------ */
@@ -35,6 +31,8 @@ typedef void (*ble_connection_status_cb_t)(ble_connection_status_t connection_st
 
 /* Public function prototypes ----------------------------------------- */
 void ble_peripheral_init(ble_receive_cb_t receive_cb, ble_connection_status_cb_t connection_status_cb);
+void ble_peripheral_deinit(void);
+
 void ble_peripheral_send_data(const uint8_t *data, uint16_t len);
 void ble_peripheral_get_mac_address(char *mac_addr);
 

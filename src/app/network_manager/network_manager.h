@@ -1,18 +1,14 @@
-/**
- * @file       network_manager.h
- * @copyright  Copyright (C) 2020 HydraTech. All rights reserved.
- * @license    This project is released under the HydraTech License.
- * @version    1.0.0
- * @date       2021-10-24
- * @author     Thuan Le
- * @brief      BLE data handler
- * @note       None
- * @example    None
- */
+/*
+* File Name: network_manager.h
+* 
+* Author: Thuan Le 
+* 
+* Description: Network Manager
+* 
+*/
 
 /* Define to prevent recursive inclusion ------------------------------ */
-#ifndef __NETWORK_H
-#define __NETWORK_H
+#pragma once
 
 #ifdef __cplusplus
 extern "C" {
@@ -24,11 +20,11 @@ extern "C" {
 /* Public defines ----------------------------------------------------- */
 /* Public function prototypes ----------------------------------------- */
 void network_process_data(uint8_t *p_data, uint8_t len);
+void network_send_notification(void);
 
 /* -------------------------------------------------------------------------- */
 #ifdef __cplusplus
 } // extern "C"
 #endif
-#endif // __NETWORK_H
 
 /* End of file -------------------------------------------------------- */

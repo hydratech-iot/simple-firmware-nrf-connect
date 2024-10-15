@@ -1,14 +1,10 @@
 /*
  * File Name: ble_manager.h
  *
- * Author: Thuan Le (thuanle@hydratech-iot.com)
+ * Author: Thuan Le
  *
  * Description: BLE Manager
  *
- * Copyright 2024, HydraTech. All rights reserved.
- * You may use this file only in accordance with the license, terms, conditions,
- * disclaimers, and limitations in the end user license agreement accompanying
- * the software package with which this file was provided.
  */
 
 /* Define to prevent recursive inclusion ------------------------------ */
@@ -25,6 +21,7 @@ extern "C"
 /* Public defines ----------------------------------------------------- */
 /* Public function prototypes ----------------------------------------- */
 void ble_manager_init(void);
+void ble_manager_deinit(void);
 
 /* -------------------------------------------------------------------------- */
 #ifdef __cplusplus

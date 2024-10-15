@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.dts": "platformio-debug.asm",
+        "bsp_io.h": "c",
+        "ble_peripheral.h": "c",
+        "base_include.h": "c"
+    }
+}

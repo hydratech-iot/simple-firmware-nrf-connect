@@ -1,14 +1,10 @@
 /*
  * File Name: bsp_io.h
  *
- * Author: Thuan Le (thuanle@hydratech-iot.com)
+ * Author: Thuan Le
  *
  * Description:
  *
- * Copyright 2024, HydraTech. All rights reserved.
- * You may use this file only in accordance with the license, terms, conditions,
- * disclaimers, and limitations in the end user license agreement accompanying
- * the software package with which this file was provided.
  */
 
 /* Define to prevent recursive inclusion ------------------------------ */
@@ -23,22 +19,8 @@
 /* Public enumerate/structure ----------------------------------------- */
 typedef enum
 {
-     IO_PIN_PWR_SWITCH_DETECT = 0
-    ,IO_PIN_IMU_INT1
-    ,IO_PIN_PPG_INT1
-    ,IO_PIN_BODY_TEMP_1_ALERT
-    ,IO_PIN_BODY_TEMP_2_ALERT
-    ,IO_PIN_BODY_TEMP_3_ALERT
-    ,IO_PIN_BODY_TEMP_4_ALERT
-    ,IO_PIN_AMB_TEMP_ALERT
-    ,IO_PIN_CHG_PGOOD
-    ,IO_PIN_MCU_PWR_EN
-    ,IO_PIN_SYSTEM_PWR_EN
-    ,IO_PIN_OLED_PWR_EN
-    ,IO_PIN_SENSOR_PWR_EN
-    ,IO_PIN_I2C_BUFFER_EN
-    ,IO_PIN_PPG_SPI_CS
-    ,IO_PIN_LOGIC_SER_PWR_EN
+     IO_PIN_BUTTON = 0
+    ,IO_PIN_LED
     ,IO_PIN_MAX
 }
 io_pin_t;

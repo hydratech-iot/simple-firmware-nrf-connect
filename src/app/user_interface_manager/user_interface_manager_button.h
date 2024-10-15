@@ -1,14 +1,10 @@
 /*
  * File Name: user_interface_manager_button.h
  *
- * Author: Thuan Le (thuanle@hydratech-iot.com)
+ * Author: Thuan Le
  *
  * Description: Button Manager
  *
- * Copyright 2024, HydraTech. All rights reserved.
- * You may use this file only in accordance with the license, terms, conditions,
- * disclaimers, and limitations in the end user license agreement accompanying
- * the software package with which this file was provided.
  */
 
 /* Define to prevent recursive inclusion ------------------------------------ */
@@ -19,15 +15,24 @@ extern "C"
 {
 #endif
 /* Includes ----------------------------------------------------------------- */
-#include "one_button.h"
 
 /* Public defines ----------------------------------------------------------- */
 /* Public enumerate/structure ----------------------------------------------- */
+typedef enum
+{
+    BTN_EVT_CLICK = 0,
+    BTM_EVT_LONG_PRESS,
+    BTN_UNKNOW,
+}
+button_event_t;
+
 /* Public Constants --------------------------------------------------------- */
 /* Public variables --------------------------------------------------------- */
 /* Public macros ------------------------------------------------------------ */
+typedef void (*button_event_cb_t)(button_event_t event);
+
 /* Public APIs -------------------------------------------------------------- */
-void user_interface_manager_button_init(void);
+void user_interface_manager_button_init(button_event_cb_t callback);
 
 /* -------------------------------------------------------------------------- */
 #ifdef __cplusplus
