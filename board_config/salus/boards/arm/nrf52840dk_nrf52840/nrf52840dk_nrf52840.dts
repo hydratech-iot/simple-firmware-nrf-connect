@@ -1,0 +1,298 @@
+/*
+ * Copyright (c) 2017 Linaro Limited
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include <nordic/nrf52840_qiaa.dtsi>
+#include "nrf52840dk_nrf52840-pinctrl.dtsi"
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+
+/ {
+	model = "Nordic nRF52840 DK NRF52840";
+	compatible = "nordic,nrf52840-dk-nrf52840";
+
+	chosen {
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+		zephyr,uart-mcumgr = &uart0;
+		zephyr,bt-mon-uart = &uart0;
+		zephyr,bt-c2h-uart = &uart0;
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+		zephyr,code-partition = &slot0_partition;
+		zephyr,ieee802154 = &ieee802154;
+	};
+
+	pwmleds {
+		compatible = "pwm-leds";
+		pwm_led0: pwm_led0 {
+			pwms = <&pwm0 0 PWM_KHZ(10) PWM_POLARITY_NORMAL>;
+			label = "PWM LED STATUS RED";
+		};
+
+		pwm_led1: pwm_led1 {
+			pwms = <&pwm0 1 PWM_KHZ(10) PWM_POLARITY_NORMAL>;
+			label = "PWM LED STATUS BLUE";
+		};
+
+		pwm_led2: pwm_led2 {
+			pwms = <&pwm0 2 PWM_KHZ(10) PWM_POLARITY_NORMAL>;
+			label = "PWM LED STATUS GREEN";
+		};
+	};
+
+	interrupts {
+		compatible = "gpio-keys";
+
+		imu_int_1: imu_int_1 {
+			gpios =  <&gpio0 4 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "IMU INTERRUPT 1";
+		};
+
+		body_temp_1_alert: body_temp_1_alert {
+			gpios =  <&gpio0 5 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "";
+		};
+
+		body_temp_2_alert: body_temp_2_alert {
+			gpios =  <&gpio0 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "";
+		};
+
+		body_temp_3_alert: body_temp_3_alert {
+			gpios =  <&gpio0 11 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "";
+		};
+
+		body_temp_4_alert: body_temp_4_alert {
+			gpios =  <&gpio1 2 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "";
+		};
+
+		amb_temp_alert: amb_temp_alert {
+			gpios =  <&gpio0 14 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "";
+		};
+
+		ppg_int: ppg_int {
+			gpios =  <&gpio0 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "";
+		};
+
+		charge_pgood: charge_pgood {
+			gpios =  <&gpio0 19 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
+			label = "";
+		};
+	};
+
+	misc_pin{
+		compatible = "gpio-leds";
+		
+		mcu_pwr_en: mcu_pwr_en {
+			gpios =  <&gpio0 29 GPIO_ACTIVE_HIGH>;
+			label = "";
+		};
+
+		system_pwr_en: system_pwr_en {
+			gpios =  <&gpio0 27 GPIO_ACTIVE_HIGH>;
+			label = "";
+		};
+
+		sensor_pwr_en: sensor_pwr_en {
+			gpios =  <&gpio1 4 GPIO_ACTIVE_HIGH>;
+			label = "";
+		};
+
+		i2c_buffer_en: i2c_buffer_en {
+			gpios =  <&gpio0 16 GPIO_ACTIVE_HIGH>;
+			label = "";
+		};
+
+		logic_ser_pwr_en: logic_ser_pwr_en {
+			gpios =  <&gpio1 8 GPIO_ACTIVE_HIGH>;
+			label = "";
+		};
+
+		oled_pwr_en: oled_pwr_en {
+			gpios =  <&gpio0 26 GPIO_ACTIVE_HIGH>;
+			label = "";
+		};
+
+		ppg_spi_cs: ppg_spi_cs {
+			gpios =  <&gpio0 22 GPIO_ACTIVE_HIGH>;
+			label = "";
+		};
+	};
+
+	buttons {
+		compatible = "gpio-keys";
+		button_pwr_switch_detect: button_pwr_switch_detect {
+			gpios = <&gpio0 2 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
+			label = "";
+		};
+	};
+
+	/* These aliases are provided for compatibility with samples */
+	aliases {
+		led-status-red   = &pwm_led0;
+		led-status-green = &pwm_led1;
+		led-status-blue  = &pwm_led2;
+
+		button-pwr-switch-detect = &button_pwr_switch_detect;
+		imu-int-1         = &imu_int_1;
+		body-temp-1-alert = &body_temp_1_alert;
+		body-temp-2-alert = &body_temp_2_alert;
+		body-temp-3-alert = &body_temp_3_alert;
+		body-temp-4-alert = &body_temp_4_alert;
+		amb-temp-alert    = &amb_temp_alert;
+		ppg-int           = &ppg_int;
+		charge-pgood      = &charge_pgood;
+
+		mcu-pwr-en       = &mcu_pwr_en;
+		system-pwr-en    = &system_pwr_en;
+		sensor-pwr-en    = &sensor_pwr_en ;
+		i2c-buffer-en    = &i2c_buffer_en ;
+		logic-ser-pwr-en = &logic_ser_pwr_en;
+		oled-pwr-en      = &oled_pwr_en;
+		ppg-spi-cs       = &ppg_spi_cs;
+	};
+};
+
+&adc {
+	status = "okay";
+};
+
+&uicr {
+	gpio-as-nreset;
+};
+
+&gpiote {
+	status = "okay";
+};
+
+&gpio0 {
+	status = "okay";
+};
+
+&gpio1 {
+	status = "okay";
+};
+
+&uart0 {
+	compatible = "nordic,nrf-uarte";
+	status = "okay";
+	current-speed = <115200>;
+	pinctrl-0 = <&uart0_default>;
+	pinctrl-1 = <&uart0_sleep>;
+	pinctrl-names = "default", "sleep";
+};
+
+&i2c0 {
+	compatible = "nordic,nrf-twim";
+	status = "okay";
+	pinctrl-0 = <&i2c0_default>;
+	pinctrl-1 = <&i2c0_sleep>;	
+	pinctrl-names = "default", "sleep";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	zephyr,concat-buf-size = <1024>;
+};
+
+&i2c1 {
+	compatible = "nordic,nrf-twim";
+	status = "okay";
+	pinctrl-0 = <&i2c1_default>;
+	pinctrl-1 = <&i2c1_sleep>;	
+	pinctrl-names = "default", "sleep";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	zephyr,concat-buf-size = <1024>;
+};
+
+&pwm0 {
+	status = "okay";
+	pinctrl-0 = <&pwm0_default>;
+	pinctrl-1 = <&pwm0_sleep>;
+	pinctrl-names = "default", "sleep";
+};
+
+&spi2 {
+	compatible = "nordic,nrf-spi";
+	status = "okay";
+	pinctrl-0 = <&spi2_default>;
+	pinctrl-1 = <&spi2_sleep>;
+	pinctrl-names = "default", "sleep";
+};
+
+&qspi {
+	status = "okay";
+	pinctrl-0 = <&qspi_default>;
+	pinctrl-1 = <&qspi_sleep>;
+	pinctrl-names = "default", "sleep";
+	mx25r64: mx25r6435f@0 {
+		compatible = "nordic,qspi-nor";
+		reg = <0>;
+		/* MX25R64 supports only pp and pp4io */
+		writeoc = "pp4io";
+		/* MX25R64 supports all readoc options */
+		readoc = "read4io";
+		sck-frequency = <8000000>;
+		jedec-id = [c2 28 17];
+		sfdp-bfp = [
+			e5 20 f1 ff  ff ff ff 03  44 eb 08 6b  08 3b 04 bb
+			ee ff ff ff  ff ff 00 ff  ff ff 00 ff  0c 20 0f 52
+			10 d8 00 ff  23 72 f5 00  82 ed 04 cc  44 83 68 44
+			30 b0 30 b0  f7 c4 d5 5c  00 be 29 ff  f0 d0 ff ff
+		];
+		size = <67108864>;
+		has-dpd;
+		t-enter-dpd = <10000>;
+		t-exit-dpd = <35000>;
+	};
+};
+
+&flash0 {
+
+	partitions {
+		compatible = "fixed-partitions";
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		boot_partition: partition@0 {
+			label = "mcuboot";
+			reg = <0x00000000 0x0000C000>;
+		};
+		slot0_partition: partition@c000 {
+			label = "image-0";
+			reg = <0x0000C000 0x00067000>;
+		};
+		slot1_partition: partition@73000 {
+			label = "image-1";
+			reg = <0x00073000 0x00067000>;
+		};
+		scratch_partition: partition@da000 {
+			label = "image-scratch";
+			reg = <0x000da000 0x0001e000>;
+		};
+
+		/*
+		 * The flash starting at 0x000f8000 and ending at
+		 * 0x000fffff is reserved for use by the application.
+		 */
+
+		/*
+		 * Storage partition will be used by FCB/LittleFS/NVS
+		 * if enabled.
+		 */
+		storage_partition: partition@f8000 {
+			label = "storage";
+			reg = <0x000f8000 0x00008000>;
+		};
+	};
+};
+
+zephyr_udc0: &usbd {
+	compatible = "nordic,nrf-usbd";
+	status = "okay";
+};
+
