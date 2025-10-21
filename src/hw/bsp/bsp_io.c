@@ -38,7 +38,7 @@ static const io_info_t IO_TABLE[IO_PIN_MAX] =
     //        +-----------------------------+-----------------------+
      IO_INFO ( IO_PIN_BUTTON                , IO_BUTTON             )
     ,IO_INFO ( IO_PIN_LED                   , IO_LED                )
-    ,IO_INFO ( IO_SPI_CS                    , IO_SPI_CS            )
+    ,IO_INFO ( IO_PIN_SPI_CS                , IO_SPI_CS             )
     //        +=============================+=======================+
 };
 
@@ -52,8 +52,14 @@ void bsp_io_init(void)
     // Output setting
     bsp_io_set_config_pin(&IO_TABLE[IO_PIN_LED].io_dt, GPIO_OUTPUT);
 
+    // CS pin setting
+    bsp_io_set_config_pin(&IO_TABLE[IO_SPI_CS].io_dt, GPIO_OUTPUT);
+
     // Turn off the LED
     bsp_io_write_specific_pin(IO_PIN_LED, 0);
+
+    // Set CS high
+    bsp_io_write_specific_pin(IO_PIN_SPI_CS, 1);
 }
 
 void bsp_io_write_specific_pin(io_pin_t pin, bool level)

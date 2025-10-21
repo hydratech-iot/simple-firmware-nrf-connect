@@ -36,7 +36,7 @@ extern "C" {
 #define IO_SPI_CS_NODE_ID               DT_ALIAS(spi_cs)
 
 // SPI CS
-#define IO_SPI_CS                       GPIO_DT_SPEC_GET_OR(IO_SPI_CS_NODE_ID, gpios, { 0 })
+#define IO_SPI_CS                   GPIO_DT_SPEC_GET_OR(IO_SPI_CS_NODE_ID, gpios, { 0 })
 
 /* Public enumerate/structure ----------------------------------------- */
 /* Public macros ------------------------------------------------------ */

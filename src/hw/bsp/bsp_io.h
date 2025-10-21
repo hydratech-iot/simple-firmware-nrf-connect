@@ -20,8 +20,8 @@
 typedef enum
 {
      IO_PIN_BUTTON = 0
-    ,IO_PIN_LED,
-    ,IO_SPI_CS,
+    ,IO_PIN_LED
+    ,IO_PIN_SPI_CS
     ,IO_PIN_MAX
 }
 io_pin_t;

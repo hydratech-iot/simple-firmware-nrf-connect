@@ -48,6 +48,8 @@
 
 #include <stddef.h>
 
+#include <zephyr/drivers/spi.h>
+
 /* Public defines ----------------------------------------------------- */
 /* Public enumerate/structure ----------------------------------------- */
 /* Public macros ------------------------------------------------------ */

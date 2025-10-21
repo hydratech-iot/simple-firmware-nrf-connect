@@ -32,6 +32,11 @@
 			gpios =  <&gpio0 6 GPIO_ACTIVE_HIGH>;
 			label = "";
 		};
+
+		spi_cs: spi_cs {
+			gpios =  <&gpio0 22 GPIO_ACTIVE_HIGH>;
+			label = "";
+		};
 	};
 
 	buttons {
@@ -46,6 +51,7 @@
 	aliases {
 		user-button = &user_button;
 		user-led    = &user_led;
+		spi-cs      = &spi_cs;
 	};
 };
 
