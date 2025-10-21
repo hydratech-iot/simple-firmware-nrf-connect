@@ -55,14 +55,14 @@ int main(void)
     return 0;
 }
 
-uint8_t tx_data[10] = {0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11, 0x22, 0x33, 0x44};
+uint8_t tx_data[1] = {0xAB};
 
 static void system_manager_task(void *p1, void *p2, void *p3)
 {
     while (1)
     {
         bsp_io_write_specific_pin(IO_PIN_SPI_CS, 0); // CS low
-        bsp_spi_2_transmit(tx_data, 10);
+        bsp_spi_2_transmit(tx_data, sizeof(tx_data));
         bsp_io_write_specific_pin(IO_PIN_SPI_CS, 1); // CS high
     }
 }
