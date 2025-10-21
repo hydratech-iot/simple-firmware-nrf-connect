@@ -33,7 +33,7 @@ extern "C" {
 #define IO_LED                      GPIO_DT_SPEC_GET_OR(IO_LED_NODE_ID, gpios, { 0 })
 
 // SPI CS Node
-#define IO_SPI_CS_NODE_ID               DT_ALIAS(spi_cs)
+#define IO_SPI_CS_NODE_ID           DT_ALIAS(spi_cs)
 
 // SPI CS
 #define IO_SPI_CS                   GPIO_DT_SPEC_GET_OR(IO_SPI_CS_NODE_ID, gpios, { 0 })

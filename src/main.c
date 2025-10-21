@@ -68,7 +68,11 @@ static void system_manager_task(void *p1, void *p2, void *p3)
 
         bsp_io_write_specific_pin(IO_PIN_SPI_CS, 1); // CS high
 
-        SYSTEM_DELAY_MSEC(100);
+        LOG_INF("SPI transmit done. Data sent: %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X",
+            tx_data[0], tx_data[1], tx_data[2], tx_data[3], tx_data[4],
+            tx_data[5], tx_data[6], tx_data[7], tx_data[8], tx_data[9]);
+
+        SYSTEM_DELAY_MSEC(1000);
     }
 }
 
