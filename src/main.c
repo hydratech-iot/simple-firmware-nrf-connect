@@ -9,6 +9,7 @@
 
 /* Includes ----------------------------------------------------------- */
 #include "base_type.h"
+#include "bsp_io.h"
 #include "bsp_spi.h"
 #include "system_manager.h"
 
@@ -60,7 +61,13 @@ static void system_manager_task(void *p1, void *p2, void *p3)
     while (1)
     {
         uint8_t tx_data[10] = {0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11, 0x22, 0x33, 0x44};
+
+        bsp_io_write_specific_pin(IO_PIN_SPI_CS, 0); // CS low
+
         bsp_spi_2_transmit(tx_data, 10);
+
+        bsp_io_write_specific_pin(IO_PIN_SPI_CS, 1); // CS high
+
         SYSTEM_DELAY_MSEC(100);
     }
 }
