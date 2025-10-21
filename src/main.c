@@ -55,24 +55,15 @@ int main(void)
     return 0;
 }
 
+uint8_t tx_data[10] = {0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11, 0x22, 0x33, 0x44};
 
 static void system_manager_task(void *p1, void *p2, void *p3)
 {
     while (1)
     {
-        uint8_t tx_data[10] = {0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, 0x11, 0x22, 0x33, 0x44};
-
         bsp_io_write_specific_pin(IO_PIN_SPI_CS, 0); // CS low
-
         bsp_spi_2_transmit(tx_data, 10);
-
         bsp_io_write_specific_pin(IO_PIN_SPI_CS, 1); // CS high
-
-        LOG_INF("SPI transmit done. Data sent: %02X %02X %02X %02X %02X %02X %02X %02X %02X %02X",
-            tx_data[0], tx_data[1], tx_data[2], tx_data[3], tx_data[4],
-            tx_data[5], tx_data[6], tx_data[7], tx_data[8], tx_data[9]);
-
-        SYSTEM_DELAY_MSEC(1000);
     }
 }
 
