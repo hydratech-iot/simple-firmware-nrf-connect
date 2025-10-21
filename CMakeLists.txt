@@ -8,6 +8,7 @@ target_sources(app PRIVATE src/main.c)
 zephyr_library_sources(
                         # BSP
                         src/hw/bsp/bsp_io.c
+                        src/hw/bsp/bsp_spi.c
                         
                         # BLE
                         src/ble/ble_peripheral.c
