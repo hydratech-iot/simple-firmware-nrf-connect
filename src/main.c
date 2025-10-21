@@ -22,7 +22,6 @@ LOG_MODULE_REGISTER(main_log);
 
 /* Public variables --------------------------------------------------- */
 /* Private variables -------------------------------------------------- */
-LOG_MODULE_REGISTER(system_manager, CONFIG_LOG_DEFAULT_LEVEL);
 K_THREAD_STACK_DEFINE(system_manager_stack, SYSTEM_MANAGER_THREAD_STACK_SIZE);
 static struct k_thread system_manager_thread;
 static k_tid_t system_manager_thread_id;
