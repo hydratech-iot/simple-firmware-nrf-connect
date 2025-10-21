@@ -38,6 +38,7 @@ static const io_info_t IO_TABLE[IO_PIN_MAX] =
     //        +-----------------------------+-----------------------+
      IO_INFO ( IO_PIN_BUTTON                , IO_BUTTON             )
     ,IO_INFO ( IO_PIN_LED                   , IO_LED                )
+    ,IO_INFO ( IO_SPI_CS                    , IO_SPI_CS            )
     //        +=============================+=======================+
 };
 
